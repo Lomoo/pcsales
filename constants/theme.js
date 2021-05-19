@@ -5,9 +5,9 @@ export const theme = createMuiTheme({
     fontFamily: 'Montserrat',
   },
 });
-
-theme.palette.primary.main = "#448bff";
-theme.palette.error.main = "#f54394";
+theme.palette.primary.main = "#12161C";
+theme.palette.error.main = "#ed1d24";
+theme.palette.background.default = "#66666"
 theme.spacingFromHeader = theme.spacing(6);
 // theme.typography.fontFamily = "Ubuntu";
 

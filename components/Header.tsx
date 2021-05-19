@@ -1,29 +1,33 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { Button, AppBar, Toolbar, Typography, Grid } from '@material-ui/core'
+import { Button, AppBar, Toolbar, Typography, Grid, MenuItem, IconButton } from '@material-ui/core'
+import { AccountCircle, MenuIcon } from '@material-ui/icons'
+import SearchIcon from '@material-ui/icons/Search'
 import { theme } from '../constants/theme'
 
 const NavBarHeader = styled(Typography)`
   padding: ${theme.spacing(1)}px ${theme.spacing(3)}px ${theme.spacing(1)}px ${theme.spacing(2)}px;
   text-transform: uppercase;
+  &:hover {
+    color: ${theme.palette.error.main};
+  }
 `
 const NavBar = styled(AppBar)`
-  background-color: #fff;
-  background-size: cover;
+  padding: ${theme.spacing(1)}px 0 ${theme.spacing(1)}px 0;
+  font-family: 'Rubik';
+}
 `
 const RightGrid = styled(Grid)`
   margin-left: auto !important;
 `
-// const NavButtons = styled(Button)`
-//   // justify-content: flex-end;
-// `
 
 const Header: React.FunctionComponent = () => {
   return (
     <>
       <NavBar position="static">
         <Toolbar>
-          <Grid container direction="row" alignItems="center">
+          <Grid container justify="space-between" direction="row" alignItems="center">
+            <Grid item></Grid>
             {NavLinks.map(({ title, path }) => (
               <Grid item key={title}>
                 <NavBarHeader variant="h4">
@@ -31,11 +35,15 @@ const Header: React.FunctionComponent = () => {
                 </NavBarHeader>
               </Grid>
             ))}
-            <RightGrid item justify="flex-end">
-              <Button> Login1 </Button>
+            <RightGrid item>
+              <IconButton color="secondary">
+                <AccountCircle style={{ color: 'white' }} />
+              </IconButton>
             </RightGrid>
-            <Grid item justify="flex-end">
-              <Button> Signup </Button>
+            <Grid item>
+              <IconButton color="secondary">
+                <SearchIcon style={{ color: 'white' }} />
+              </IconButton>
             </Grid>
           </Grid>
         </Toolbar>
