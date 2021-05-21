@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { Button, AppBar, Toolbar, Typography, Grid, MenuItem, IconButton } from '@material-ui/core'
-import { AccountCircle, MenuIcon } from '@material-ui/icons'
+import { AppBar, Toolbar, Typography, Grid, IconButton } from '@material-ui/core'
+import { AccountCircle } from '@material-ui/icons'
 import SearchIcon from '@material-ui/icons/Search'
 import { theme } from '../constants/theme'
 
