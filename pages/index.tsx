@@ -1,32 +1,50 @@
 // pages/index.tsx
 // import { GetServerSideProps, NextPage } from 'next'
-import { NextPage } from 'next'
-import Header from '../components/Header'
 
-// interface Props {
-//   launch: {
-//     mission: string
-//     site: string
-//     timestamp: number
-//     rocket: string
-//   }
-// }
-const IndexPage: NextPage = () => {
+import { GetServerSideProps, NextPage } from 'next'
+import Header from '../components/Header'
+import { gql } from '@apollo/client'
+import client from '../apollo-client'
+
+interface Props {
+  product: {
+    productName: string
+    imageUrl: string
+    price: number
+    salePrice: number
+  }
+}
+
+const IndexPage: NextPage<Props> = ({ product }) => {
+  console.log(product)
   return <Header />
 }
-export default IndexPage
 
-// export const getServerSideProps: GetServerSideProps<Props> = async () => {
-//   const response = await fetch('https://api.spacexdata.com/v3/launches/next')
-//   const nextLaunch = await response.json()
-//   return {
-//     props: {
-//       launch: {
-//         mission: nextLaunch.mission_name,
-//         site: nextLaunch.launch_site.site_name_long,
-//         timestamp: nextLaunch.launch_date_unix * 1000,
-//         rocket: nextLaunch.rocket.rocket_name,
-//       },
-//     },
-//   }
-// }
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await client.query({
+    query: gql`
+      query {
+        productCollection(limit: 10) {
+          items {
+            productName
+            imageUrl
+            price
+            salePrice
+          }
+        }
+      }
+    `,
+  })
+  const firstProduct = data.productCollection.items[0]
+  return {
+    props: {
+      product: {
+        productName: firstProduct.productName,
+        imageUrl: firstProduct.imageUrl,
+        price: firstProduct.price,
+        salePrice: firstProduct.salePrice,
+      },
+    },
+  }
+}
+export default IndexPage
