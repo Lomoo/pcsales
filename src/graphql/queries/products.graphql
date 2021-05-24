@@ -1,0 +1,15 @@
+query Products {
+    productCollection(limit: 10) {
+        items {
+            productName
+            imageUrl
+            price
+            salePrice
+            slug
+            sys {
+                id
+            }
+          }
+
+    }
+}

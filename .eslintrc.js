@@ -16,7 +16,7 @@ module.exports = {
       // This configuration will apply only to TypeScript files
       {
         files: ['**/*.ts', '**/*.tsx'],
-        parser: '@typescript-eslint/parser',
+        parser: '@babel/eslint-parser',
         settings: { react: { version: 'detect' } },
         env: {
           browser: true,

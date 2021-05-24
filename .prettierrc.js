@@ -2,7 +2,7 @@
 module.exports = {
     // Change your rules accordingly to your coding style preferences.
     // https://prettier.io/docs/en/options.html
-    semi: false,
+    semicolon: [true, "never", "ignore-interfaces"],
     trailingComma: 'es5',
     singleQuote: true,
     printWidth: 100,
