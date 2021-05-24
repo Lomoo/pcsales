@@ -5,7 +5,7 @@
         "build": "next build",
         "start": "next start",
         "type-check": "tsc --project tsconfig.json --pretty --noEmit",
-        "lint": "eslint --ext js,jsx,ts,tsx --fix",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix --debug",
         "prepare": "husky install",
         "gen": "graphql-codegen --config codegen.yml"
     },
@@ -19,8 +19,6 @@
         "@types/node": "^15.3.0",
         "@types/react": "^17.0.5",
         "@typescript-eslint/eslint-plugin": "^4.23.0",
-        "@typescript-eslint/parser": "^4.23.0",
-        "contentful": "^8.3.5",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-prettier": "^3.4.0",
@@ -28,7 +26,6 @@
         "eslint-plugin-react-hooks": "^4.2.0",
         "graphql": "^15.5.0",
         "husky": "^6.0.0",
-        "lint-staged": "^11.0.0",
         "next": "^10.2.0",
         "next-apollo": "^5.0.4",
         "prettier": "^2.3.0",
@@ -38,13 +35,15 @@
         "typescript": "^4.2.4"
     },
     "devDependencies": {
-        "@babel/core": "^7.14.3",
         "@graphql-codegen/cli": "1.21.4",
         "@graphql-codegen/typescript": "^1.22.0",
         "@graphql-codegen/typescript-operations": "1.17.16",
         "@graphql-codegen/typescript-react-apollo": "2.2.4",
         "@types/styled-components": "^5.1.9",
+        "@typescript-eslint/parser": "^4.24.0",
         "babel-plugin-styled-components": "^1.12.0",
-        "eslint": "^7.27.0"
+        "eslint": "^7.27.0",
+        "eslint-config-airbnb-typescript": "^12.3.1",
+        "lint-staged": "^11.0.0"
     }
 }

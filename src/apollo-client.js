@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client"
 
 const client = new ApolloClient({
     uri: "https://graphql.contentful.com/content/v1/spaces/00nc818lsz67",
@@ -8,4 +8,4 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 });
 
-export default client;
+export default client

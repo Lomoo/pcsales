@@ -1,33 +1,38 @@
-import Header from '../components/Header'
-import NextLink from 'next/link'
-import { useProductsQuery } from '../generated/graphql'
-import withApollo from '../utils/withApollo'
-import { Link } from '@material-ui/core'
+import NextLink from 'next/link';
+import { Link } from '@material-ui/core';
+import Header from '../components/Header';
+import { useProductsQuery } from '../generated/graphql';
+import withApollo from '../utils/withApollo';
+
 const Index = () => {
-  const { data, loading, error } = useProductsQuery()
-  if (!loading && !data) {
+    const { data, loading, error } = useProductsQuery();
+    if (!loading && !data) {
+        return (
+            <div>
+                <div>you got query failed for some reason</div>
+                <div>{error?.message}</div>
+            </div>
+        );
+    }
     return (
-      <div>
-        <div>you got query failed for some reason</div>
-        <div>{error?.message}</div>
-      </div>
-    )
-  }
-  return (
-    <>
-      <Header />
-      <div>
-        {data?.productCollection?.items.map((product) => (
-          <NextLink href="/product/[slug]/[id]" as={`/product/${product?.slug}/${product?.sys.id}`} key={product?.sys.id}>
-            <Link>
-              <h1> {product?.productName} </h1>
-            </Link>
-          </NextLink>
-        ))}
-      </div>
-    </>
-  )
-}
+        <>
+            <Header />
+            <div>
+                {data?.productCollection?.items.map((product) => (
+                    <NextLink
+                        href="/product/[slug]/[id]"
+                        as={`/product/${product?.slug}/${product?.sys.id}`}
+                        key={product?.sys.id}
+                    >
+                        <Link>
+                            <h1> {product?.productName} </h1>
+                        </Link>
+                    </NextLink>
+                ))}
+            </div>
+        </>
+    );
+};
 // const IndexPage: NextPage<ProductProps> = ({ product }) => {
 //   console.log(product)
 //   return <Header />
@@ -61,4 +66,4 @@ const Index = () => {
 //   }
 // }
 // export default IndexPage
-export default withApollo({ ssr: true })(Index)
+export default withApollo({ ssr: true })(Index);
