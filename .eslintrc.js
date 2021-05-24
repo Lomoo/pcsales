@@ -5,11 +5,13 @@ module.exports = {
     node: true,
     es6: true,
   },
-  parserOptions: { ecmaVersion: 11 }, // to enable features such as async/await
-  ignorePatterns: ['node_modules/*', '.next/*', '.out/*', '!.prettierrc.js'], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
+  parserOptions: { 
+    ecmaVersion: 11,
+    sourceType :'module',
+    },
+  ignorePatterns: ['node_modules/*', '.next/*', '.out/*', '!.prettierrc.js'], 
   extends: ['eslint:recommended'],
   overrides: [
-    // This configuration will apply only to TypeScript files
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
@@ -20,7 +22,6 @@ module.exports = {
         es6: true,
       },
       extends: [
-        'airbnb-typescript',
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended', // TypeScript rules
         'plugin:react/recommended', // React rules

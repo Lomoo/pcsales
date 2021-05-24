@@ -3,3 +3,4 @@ node_modules/
 codegen.yml
 .vscode
 .env.local
+.eslintignore
